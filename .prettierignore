@@ -1,0 +1,6 @@
+.history/
+
+dist/
+docs/public/
+coverage/
+temp/

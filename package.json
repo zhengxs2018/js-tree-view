@@ -1,0 +1,101 @@
+{
+  "name": "@zhengxs/js.tree",
+  "version": "0.1.0",
+  "description": "一个专门处理树数据的 JavaScript 库",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "./dist/index.d.ts",
+  "keywords": [],
+  "scripts": {
+    "start": "cross-env NODE_ENV=development rollup -cw rollup.config.js",
+    "build": "cross-env NODE_ENV=production rollup -c rollup.config.js",
+    "lint": "eslint src/**/*.ts",
+    "format": "prettier --write \"**/*.{js,ts}\"",
+    "test": "jest",
+    "cov": "jest --coverage",
+    "ci": "jest --coverage ----coverageReporters=json",
+    "api": "api-extractor run",
+    "typedoc": "typedoc --options typedoc.js ./src",
+    "commit": "cz",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
+    "preversion": "npm run lint && npm test",
+    "version": "npm run changelog",
+    "postversion": "git push --follow-tags",
+    "prepublishOnly": "npm run build"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,js}": "prettier --write",
+    "*.ts": "eslint --fix"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@microsoft/api-extractor": "^7.14.0",
+    "@rollup/plugin-commonjs": "^18.0.0",
+    "@rollup/plugin-json": "^4.0.2",
+    "@rollup/plugin-node-resolve": "^11.1.0",
+    "@rollup/plugin-replace": "^2.3.4",
+    "@types/jest": "^26.0.22",
+    "@types/lodash": "^4.14.168",
+    "@types/node": "^14.14.41",
+    "@types/power-assert": "^1.5.3",
+    "@typescript-eslint/eslint-plugin": "^4.14.0",
+    "@typescript-eslint/parser": "^4.14.0",
+    "builtin-modules": "^3.2.0",
+    "commitizen": "^4.2.3",
+    "commitlint": "^12.1.1",
+    "conventional-changelog-cli": "^2.1.1",
+    "cross-env": "^7.0.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "^8.2.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-tsdoc": "^0.2.14",
+    "husky": "^6.0.0",
+    "jest": "^26.6.3",
+    "lint-staged": "^10.5.3",
+    "lodash": "^4.17.15",
+    "parse-pkg-name": "^2.0.0",
+    "power-assert": "^1.6.1",
+    "prettier": "^2.2.1",
+    "rollup": "^2.37.0",
+    "rollup-plugin-clear": "^2.0.7",
+    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-plugin-filesize": "^9.1.0",
+    "rollup-plugin-node-externals": "^2.1.3",
+    "rollup-plugin-progress": "^1.1.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "rollup-plugin-visualizer": "^5.4.1",
+    "ts-jest": "^26.4.4",
+    "typedoc": "^0.20.36",
+    "typedoc-plugin-nojekyll": "^1.0.1",
+    "typescript": "^4.1.5"
+  },
+  "engines": {
+    "node": ">= 10.x"
+  },
+  "author": {
+    "name": "zhengxs2018",
+    "email": "zhengxs2018@foxmail.com"
+  },
+  "license": "MIT"
+}
